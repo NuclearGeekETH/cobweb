@@ -17,12 +17,20 @@ load_dotenv()
 
 api_key = os.environ["api_key"]
 api_secret = os.environ["api_secret"]
+api_token = os.environ["api_token"]
 
-pin_url = "https://api.pinata.cloud/pinning/pinFileToIPFS"
+# pin_url = "https://api.pinata.cloud/pinning/pinFileToIPFS"
+pin_url = "https://api.web3.storage/upload"
+
+# headers = {
+#   'pinata_api_key': api_key,
+#   'pinata_secret_api_key': api_secret
+# }
 
 headers = {
-  'pinata_api_key': api_key,
-  'pinata_secret_api_key': api_secret
+  'accept': 'application/json',
+  'Authorization': 'Bearer ' + api_token
+  # 'Content-Type': 'multipart/form-data'
 }
 
 def startBot(website):
@@ -60,7 +68,8 @@ def startBot(website):
     ]
     response = requests.request("POST", pin_url, headers=headers, data=payload, files=files)
     print(response.text)
-    ipfs_hash = response.json()['IpfsHash']
+    # ipfs_hash = response.json()['IpfsHash']
+    ipfs_hash = response.json()['cid']
     # link = 'https://mintypa.mypinata.cloud/ipfs/' + ipfs_hash + '/' + filename
     link = ipfs_hash + '/' + filename
     return link
