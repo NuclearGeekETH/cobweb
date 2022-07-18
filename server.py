@@ -1,6 +1,7 @@
 from flask import Flask, request, render_template, redirect, url_for, jsonify
 import test
 from cobweb import startBot
+from OpenSSL import SSL
 
 app = Flask(__name__)
 
@@ -9,34 +10,24 @@ def index():
   return render_template('index.html')
 
 @app.route('/get_site/', methods=['GET', 'POST'])
-# @app.route('/get_site/')
 def get_site():
   if request.method == "POST":
     website = request.form['site']
     print(website)
-    # print(website)
-    # website = "https://twitter.com/NuclearGeeketh/status/1547685440592834569"
     print('clicked')
     link = startBot(website)
     print(link)
-    # return redirect(url_for(link))
-    # return render_template('getsite.html', link=link)
   return render_template('getsite.html', link=link)
   
-  # else:
-  #   print('test')  
-  #   website = request.form['return']
-  #   print(website)
-  #   print('clicked')
-  #   link = startBot(website)
-  #   # return link, res
-  #   return link
-
-# @app.route('/my-link/')
-# def my_link():
-#   print ('I got clicked!')
-
-#   return 'Click.'
 
 if __name__ == '__main__':
-  app.run(debug=True)
+  # context = SSL.Context(SSL.TLSv1_2_METHOD)
+  # context.use_privatekey_file('/etc/letsencrypt/live/cobweb.aifrens.io/privkey.pem')
+  # context.use_certificate_file('/etc/letsencrypt/live/cobweb.aifrens.io/fullchain.pem')
+  from waitress import serve
+  serve(app, host="0.0.0.0", port=80)
+  # context=('/etc/letsencrypt/live/cobweb.aifrens.io/fullchain.pem', '/etc/letsencrypt/live/cobweb.aifrens.io/privkey.pem')
+  # app.run(host="0.0.0.0", ssl_context=context, threaded=True, port=80)
+  # app.run(host="0.0.0.0", ssl_context=('adhoc'), port=80)
+  # app.run(debug=False)  
+  # app.run(host="0.0.0.0", port=80, ssl_context=('/etc/letsencrypt/live/cobweb.aifrens.io/fullchain.pem', '/etc/letsencrypt/live/cobweb.aifrens.io/privkey.pem'))

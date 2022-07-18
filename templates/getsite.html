@@ -6,16 +6,51 @@ h1 {text-align: center;}
 p {text-align: center;}
 a {text-align: center;}
 div {text-align: center;}
+iframe {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}
+
 p.a {
   margin: 30px 0;
+  margin-top: 25px;
 }
 img {
-  width: 100%;
+  width: 50%;
+}
+body { 
+            background-color: #050B2F;
+}
+a:link {
+  color: rgb(255, 255, 255);
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:visited {
+  color: pink;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:hover {
+  color: red;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+a:active {
+  color: yellow;
+  background-color: transparent;
+  text-decoration: underline;
 }
 </style>
 </head>
 <body>
-    <p><a href="https://mintypa.mypinata.cloud/ipfs/{{link}}"> Your link is pinned! </a></p>
+    <p><a href="https://mintypa.mypinata.cloud/ipfs/{{link}}">Your link is pinned!<br>
+        <img src="https://mintypa.mypinata.cloud/ipfs/{{link}}"></a></p>
+    <!-- <iframe name="Framename" src="https://mintypa.mypinata.cloud/ipfs/{{link}}" height="720" frameborder="0" scrolling="yes" style="width: 50%;"> </iframe> -->
 
     <!-- <p><a href="{{ url_for('get_site') }}">Check out this cool pin!</a></p></body> -->
 </html>
