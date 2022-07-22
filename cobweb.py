@@ -10,6 +10,8 @@ import time
 import requests
 from dotenv import load_dotenv
 import os
+from Screenshot import Screenshot_Clipping
+ss = Screenshot_Clipping.Screenshot()
 
 load_dotenv()
 
@@ -46,22 +48,28 @@ def startBot(website):
     filename = str(time_stamp) + '.png'
     filelocation = 'images/' + filename
     options = Options()
-    options.add_argument('--headless')
     options.add_argument('--no-sandbox')
     options.add_argument('--disable-dev-shm-usage')
-    driver = webdriver.Chrome(executable_path='chromedriver', options=options)
+    options.add_argument('--headless')
+    driver = webdriver.Chrome(options=options)
     driver.get(website)
-    driver.implicitly_wait(2)
+    # driver.implicitly_wait(2)
 
-    # original_size = driver.get_window_size()
-    required_width = driver.execute_script('return document.body.parentNode.scrollWidth')
-    required_height = driver.execute_script('return document.body.parentNode.scrollHeight')
-    driver.set_window_size(required_width, required_height)
-    # driver.save_screenshot(path)  # has scrollbar
-    time.sleep(5)
+    # # original_size = driver.get_window_size()
+    # required_width = driver.execute_script('return document.body.parentNode.scrollWidth')
+    # required_height = driver.execute_script('return document.body.parentNode.scrollHeight')
+    # driver.set_window_size(required_width, required_height)
+    # # driver.save_screenshot(path)  # has scrollbar
+    # time.sleep(5)
     driver.find_element(By.XPATH, '/html/body')
-    driver.save_screenshot(filelocation)  # avoids scrollbar
-    # driver.set_window_size(original_size['width'], original_size['height'])
+    # driver.save_screenshot(filelocation)  # avoids scrollbar
+    # # driver.set_window_size(original_size['width'], original_size['height'])
+
+
+
+
+    ss.full_Screenshot(driver, save_path='images/', image_name=filename)
+    # ss.get_element(driver, element, filelocation)
 
     # S = lambda X: driver.execute_script('return document.body.parentNode.scroll'+X)
     # driver.set_window_size(S('Width'),S('Height'))
