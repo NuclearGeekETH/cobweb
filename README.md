@@ -12,7 +12,7 @@ Clone the repository
 
 For the Flask Server to run the website:
 
-Run server.py and install missing dependencies. You might need to comment off lines 34 and 35 from server.py and turn on your own version of app.run() depending on how you want to host it. You will need a .env file in root with your web3.storage or pinata keys.
+Run server.py and install missing dependencies. You will need a .env file in root with your web3.storage or pinata keys. Once running open a web browser and navigate to localhost:3000. 
 
 For the Twitter Bot:
 

@@ -5,16 +5,6 @@
     <title>Test</title> 
     <meta charset=utf-8> 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <!-- <script type=text/javascript>
-        $(function() {
-          $('a#test').on('click', function(e) {
-            e.preventDefault()
-            $.getJSON('/get_site/',
-                function(data) {
-                 console.log(data)
-            });
-          });
-        }); -->
     </script>
     <link rel="apple-touch-icon" sizes="180x180" href="static/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="static/favicon-32x32.png">
@@ -40,45 +30,8 @@
     <body>
         <h1>Pin a Website</h1>
         
-        <!-- <form action="/action_page.php" method="get">
-            <label for="fname">First name:</label>
-            <input type="text" id="fname" name="fname"><br><br>
-            <button type="submit" formaction="/action_page2.php">Submit to another page</button>
-          </form> -->
         <form style="text-align: center;" action="{{ url_for('get_site') }}" method="post">
             <input type="text" name="site" id="site">
             <a href=# id=test><button type="submit" id="test">Submit</button></a>
         </form>  
-        <!-- <form>
-            <label for="test">Website to Pin:  </label><input type="text" id="test" name="test"><br><br>
-            <a href=# id=test><button type="submit" id="test">Submit</button></a>
-        </form> -->
-        <!-- <form action="{{ url_for('get_site') }}" method="post">
-            <label for="site">Website to Pin:</label>
-            <input type="text" id="site" name="site"><br><br>
-            <a href=# id=test>
-            <button type="submit" id="test">Submit</button></a>
-        </form>
-        <form method="get"></form>
-            <label for="return">Pinned Site:</label>
-            <input type="text" id="return" name="return" value="{{ request.form['return'] }}"><br><br>
-          </form> -->
-        <!-- <button
-        type="button"
-        class="btn btn-primary"
-        onclick="btnName()"
-        >Click here
-        </button>
-        <p id="resBtnHere"></p>
-        <button> <a href="/my-link/">Click me</a></button> -->
-        <!-- <script>var btnName = function() {
-            $.get('/get_site',
-              function(x) {
-                $("#resBtnHere").html(x);
-              }
-            )
-          }
-          btnName()
-          </script> -->
-
     </body>

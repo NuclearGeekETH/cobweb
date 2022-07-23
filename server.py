@@ -28,13 +28,8 @@ def get_site():
   
 
 if __name__ == '__main__':
-  # context = SSL.Context(SSL.TLSv1_2_METHOD)
-  # context.use_privatekey_file('/etc/letsencrypt/live/cobweb.aifrens.io/privkey.pem')
-  # context.use_certificate_file('/etc/letsencrypt/live/cobweb.aifrens.io/fullchain.pem')
-  from waitress import serve
-  serve(app, host="0.0.0.0", port=80)
-  # context=('/etc/letsencrypt/live/cobweb.aifrens.io/fullchain.pem', '/etc/letsencrypt/live/cobweb.aifrens.io/privkey.pem')
+  # from waitress import serve
+  # serve(app, host="0.0.0.0", port=80)
   # app.run(host="0.0.0.0", ssl_context=context, threaded=True, port=80)
-  # app.run(host="0.0.0.0", ssl_context=('adhoc'), port=80)
+  app.run(host="0.0.0.0", port=3000)
   # app.run(debug=False)  
-  # app.run(host="0.0.0.0", port=80, ssl_context=('/etc/letsencrypt/live/cobweb.aifrens.io/fullchain.pem', '/etc/letsencrypt/live/cobweb.aifrens.io/privkey.pem'))
